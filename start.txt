@@ -1,0 +1,21 @@
+   bin/zookeeper-server-start.sh config/zookeeper.properties                                       - start zookeper
+
+   bin/kafka-server-start.sh config/server.properties                                              - start kafka
+
+   bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic 24hours_topic
+
+   bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic 5min_topic
+
+   bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic 24hours_topic --from-beginning
+
+   bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic 5min_topic --from-beginning
+
+   bin/elasticsearch
+
+   bin/kibana
+
+   bin/kafka-topics.sh --zookeeper 0.0.0.0:2181 --list                                               - list of topics
+
+   bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic 24hours_topic
+
+   bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name 24hours_topic --alter --add-config retention.ms=128000
